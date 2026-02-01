@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>#game{display:block;background:#b90000;width:100vw;height:100vh}</style>
+    <title>Funny Platformer</title>
+</head>
+<body>
+    <script>//no touchy!
+const canvas=document.getElementById('game');const ctx=canvas.getContext('2d');
+let DPR=Math.max(1,window.devicePixelRatio||1);
+function resize(){
+canvas.width =innerWidth * DPR;
+canvas.height=innerHeight * DPR;
+canvas.style.width =innerWidth+'px';
+canvas.style.height=innerHeight+'px';
+ctx.setTransform(DPR,0,0,DPR,0,0);
+}
+addEventListener('resize',resize);
+resize()
+
+//player
+playerart=new Image();
+playerart.src='art/froop.png'
+const froop={x:50,y:50,w:144,h:152}
+
+function images(){
+if(playerart.complete){ctx.drawImage(playerart,froop.x,froop.y,froop.w,froop.h)}
+    requestAnimationFrame(images)}images()
+</script>
+</body>
+</html>
